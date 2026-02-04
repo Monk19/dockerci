@@ -10,11 +10,7 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} ."
       - name: Check out repository code
         uses: actions/checkout@v5
-      - name: Set up Docker Compose
-       # This action ensures Docker Compose is installed and available
-        uses: docker/setup-compose-action@v2
-        with:
-          version: 'latest'
+      
       - name: Build Docker Images
         run: docker compose build
       - name: Run Docker Compose services (in detached mode)
