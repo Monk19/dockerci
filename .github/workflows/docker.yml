@@ -27,5 +27,6 @@ jobs:
             sleep 5
             counter=$((counter + 5))
           done
+          curl http://localhost:5000
       # Replace <service_name> with the actual name of your service in docker-compose.yml
           
