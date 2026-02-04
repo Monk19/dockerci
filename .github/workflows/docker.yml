@@ -12,12 +12,7 @@ jobs:
         uses: actions/checkout@v5
       
       - name: Build Docker Images
-        run: docker compose build
-      - name: Run Docker Compose services (in detached mode)
-      # Brings up all services in the compose file(s) and cleans up afterwards
-        uses: hoverkraft-tech/compose-action@v2 # A community action for running compose
-        with:
-          up-flags: "--build -d" # Pass --build flag to re-build images if needed
+        run: docker compose up -d --build
 
       - name: Wait for services to be healthy (optional, but recommended)
       # You might need a specific wait logic depending on service startup times
