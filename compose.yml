@@ -7,20 +7,20 @@ services:
   web1:
     restart: on-failure
     build: ./web
-    image: mdock1997/web:latest
+    image: mdock1997/myapp:web1
     hostname: web1
     ports:
       - '81:5000'
   web2:
     restart: on-failure
     build: ./web
-    image: mdock1997/web2:latest
+    image: mdock1997/myapp:web2
     hostname: web2
     ports:
       - '82:5000'
   nginx:
     build: ./nginx
-    image: mdock1997/nginx:laste
+    image: mdock1997/myapp:nginx
     ports:
     - '80:80'
     depends_on:
