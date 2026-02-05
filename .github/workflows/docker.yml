@@ -24,4 +24,16 @@ jobs:
       # Replace <service_name> with the actual name of your service in docker-compose.yml
       - name: Docker Compose push image
         run: docker compose push
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+            docker stop myapp || true
+            docker rm myapp || true
+            docker run -d --name myapp -p 80:5000 ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+
           
