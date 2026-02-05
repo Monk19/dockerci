@@ -20,4 +20,6 @@ jobs:
           sleep 5
           curl http://localhost/
       # Replace <service_name> with the actual name of your service in docker-compose.yml
+      - name: Docker Compose push image
+        run: docker compose push
           
